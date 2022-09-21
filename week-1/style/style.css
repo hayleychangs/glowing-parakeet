@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+body{
+    margin:0; /*發現網頁邊緣空白>清除body預設樣式-Remove the margin in all browsers*/
+    font-size: 20px;    /*基礎文字設定*/
+    font-family: 'Caveat Brush', cursive;
+    padding-top: 60px;
+}
+#menu-ctrl{
+    position: absolute;
+    opacity: 0;
+}
+.hamburger{
+    display: none;
+}
+.wrapper-content{
+    box-sizing: border-box;
+    width:100%;
+    max-width: 1920px;
+    margin:0 auto;
+}
+.header-content{    /*設定排版寬高*/
+    box-sizing: border-box; /*寬高設定作用在邊框外緣的範圍內*/
+    height:60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between; /*左右分散對齊*/
+    align-items: center;
+    color: #3366CC;
+    position: fixed;
+    top: 0;
+    background-color: #d0dcf5;
+}
+.item{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+.item-text{
+    letter-spacing: 1px;
+}
+.item-text:hover{
+    transition: all 0.2s;
+    color: #F3BA19;
+}
+.section-banner{
+    box-sizing: border-box;
+    height: 300px;  /*作業設定*/
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #FFF2CC;
+}
+.banner{
+    font-size: 2rem;
+    letter-spacing: 5px;
+    color: #595959;
+}
+.section-box1{
+    box-sizing: border-box;
+    width: 1200px;
+    height: 60px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+}
+.box1{
+    height: 50px;   /*2個方框50px*/
+    width: 585px;
+    margin: auto;
+    background-color: #FFF2CC;
+}
+.box1-pic-container{
+    width: 80px;
+    height: 50px;
+    display:block;
+    float: left;
+}
+.box1-pic{
+    width:100%;
+    height:100%;
+}
+.box1-text{
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center; /*字置中，line-height也可，都要先設定height*/
+    padding-left: 10px;
+    color: #595959;
+}
+.section-box2{
+    box-sizing: border-box;
+    width: 1200px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:center;
+}
+.box2{
+    width:285px;
+    height: 320px;
+    background-color: aqua;
+    margin:auto ;
+    margin-bottom: 20px;
+}
+.box2-pic-container{
+    width: 100%;
+    height: auto;
+    display:block;
+    float: left;
+}
+.box2-pic{
+    width:100%;
+    height:100%;
+}
+.box2-text{
+    width: 100%;
+    padding-bottom: 5px;
+    text-align: center;
+    background-color: #FFF2CC;
+    color: #595959;
+}
+@media screen and (max-width:1200px) and (min-width:600px){
+    .hamburger{
+        display: none;
+    }
+    .section-box1{  /*總寬度90%*/
+        width: 90%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .box1{
+        width: 90%;
+        height: 50px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .section-box2{  /*總寬度90%*/
+        width: 90%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .box2{
+        width: 90%;
+        height: auto;
+        margin: auto;
+        margin-bottom: 35px;
+    }
+}
+@media screen and (max-width:600px) and (min-width:360px){
+    .header{
+        position: relative;
+    }
+    .hamburger{
+        display: block;
+        width: 65px;
+        height: 65px;
+        position: absolute;
+        top: -3px;
+        right: -10px;
+    }
+    nav{
+        width: 100%;
+        position: absolute;
+        top: 60px;  /*定位在header下右方*/
+        right: 0;
+        background-color:#D9D9D9;
+        max-height: 0;
+        overflow: hidden;
+        transition: .5s;
+    }
+    .item{
+        width: 100%;  /*滿版設定*/
+        display: block;
+        color: #595959;
+        padding: 0px 20px;
+        text-align: center;
+    }
+    .item-text{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .item-text:hover{
+        transition: all 0.2s;
+        color: #3366CC;
+    }
+    #menu-ctrl:checked ~ .header-content nav{
+        max-height: calc(300vh - 60px); /*計算視窗高-header視窗高viewport-height*/
+    }
+    .banner{
+        font-size: 1.2rem;
+    }
+    .section-box1{  /*總寬度90%*/
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 10px;
+    }
+    .box1{
+        height: 50px;
+        width: 100%;
+        margin-top: 10px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 20px;
+    }
+    .box1-pic{  
+        width:100%;
+        height:100%;
+    }
+    .section-box2{  /*總寬度90%*/
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 20px;
+    }
+    .box2{
+        width: 100%;
+        height: 100%;
+        margin-top: 0px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 30px;
+    }
+    .box2-pic{ 
+        width:100%;
+        height:100%;
+    }
+}
