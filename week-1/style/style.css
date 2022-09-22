@@ -193,14 +193,14 @@ body{
     }
     .item{
         width: 100%;  /*滿版設定*/
-        display: block;
-        color: #595959;
-        padding: 0px 20px;
-        text-align: center;
+        display: block; /*flex direction:columm也可*/
+        color: #595959;      
     }
     .item-text{
         padding-top: 10px;
         padding-bottom: 10px;
+        width: 100%;
+        text-align: center;    
     }
     .item-text:hover{
         transition: all 0.2s;
