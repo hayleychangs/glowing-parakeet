@@ -139,14 +139,14 @@ body{
     right: 0;
     margin-bottom: -30px;
 }
-.star-icon{
+/*.star-icon{
     max-width: 30px;
     width: 100%;
     display: block;
     position: absolute;
     top: 5px;
     right: 5px;
-}
+}*/
 @media screen and (max-width:1200px) and (min-width:600px){
     .hamburger{
         display: none;
@@ -257,6 +257,9 @@ body{
     .box1-pic{  
         width:100%;
         height:100%;
+    }
+    .box1-text{
+        width: 150px;
     }
     .section-box2{  /*總寬度90%*/
         width: 90%;
