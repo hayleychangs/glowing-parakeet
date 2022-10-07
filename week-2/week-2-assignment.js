@@ -1,4 +1,4 @@
-// //要求一: 函式與流程控制
+//要求一: 函式與流程控制
 function calculate(min, max, step){
     let n=min;
     let m=max;
@@ -74,80 +74,13 @@ func(-3)(2, 9); // 你補完的函式能印出 -3+(2*9) 的結果 15
 
 //要求四：
 function maxProduct(nums){
-    let list=nums;
-    let product=[];
-    let newlist=[];
-    let newlist2=[];
-    let len=list.length;
-    if (len==4){
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}
-
-        newlist2=[];
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}
-
-        newlist2=[];
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}
-    }else if(len==3){
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}
-
-        newlist2=[];
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}   
-    }else(len==2);{
-        newlist2.push(list[0]);
-        list.shift(0);
-        newlist=list;
-        for(let i=0;i<newlist.length;i++){
-            for(let j=0;j<newlist2.length;j++){
-                let num=newlist[i]*newlist2[j];
-            product.push(num);
-        }}
-    }
-    function MyMax(myarr){
-        let alen = myarr.length;
-        maximum = myarr[alen-1];
-        while (alen--){
-            if(myarr[alen] > maximum){
-                maximum = myarr[alen]
+    let result = nums[0] * nums[1];
+    for (let i=0;i<nums.length;i++){
+        for (let j=0;j<nums.length;j++)
+            if (nums[i]*nums[j]>result & nums[i] != nums[j]){
+                result=nums[i]*nums[j]
             }
-        }
-                return maximum;
-        };
-    let result= MyMax(product);
+    }
     console.log(result)
 }
 maxProduct([5, 20, 2, 6]) // 得到 120
@@ -174,3 +107,41 @@ function twoSum(nums, target){
 let result=twoSum([2, 11, 7, 15], 9);
 console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
     
+
+//要求六 ( Optional )：
+function maxZeros(nums){
+    // let a=0;
+    // let repeated_time=0;
+    // for (let i=0;i<nums.length;i++){
+    //     if (i==0){
+    //         repeated_time+=1;
+    //         // a=Math.max(repeated_time, a);
+    //     }else if(i !==0){
+    //         a=Math.max(repeated_time, a);
+    //         repeated_time=0;
+    //     }
+        
+    // console.log(a)
+    // }
+    // }
+    let a=0
+    let count = 0
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] === 0){
+            count += 1;
+            if (count>a){
+                a=count+=1;
+            }else(nums[i]===1);{
+                count=0;
+            }
+        }else(nums[i]===1);{
+            count=0;
+        }  
+        }
+    // }
+    console.log(a)
+}
+maxZeros([0, 1, 0, 0]); // 得到 2
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); // 得到 4
+// maxZeros([1, 1, 1, 1, 1]); // 得到 0
+// maxZeros([0, 0, 0, 1, 1]) // 得到 3

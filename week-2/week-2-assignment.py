@@ -68,71 +68,12 @@ func(-3)(2, 9) # 你補完的函式能印出 -3+(2*9) 的結果 15
 
 #要求四：
 def maxProduct(nums):
-    list=nums
-    product=[]
-    newlist2=[]
-    length=len(list)
-    if length==4:
-        iii=list[1:length]
-        newlist=iii
-        jjj=list[0]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-        
-        iii=list[2:length]
-        newlist=iii
-        jjj=list[1]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-
-        iii=list[3:length]
-        newlist=iii
-        jjj=list[2]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-
-        result=max(product)
-        print(result)
-    elif length==3:
-        iii=list[1:length]
-        newlist=iii
-        jjj=list[0]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-        
-        iii=list[2:length]
-        newlist=iii
-        jjj=list[1]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-        result=max(product)
-        print(result)
-    else:
-        iii=list[1:length]
-        newlist=iii
-        jjj=list[0]
-        newlist2.append(jjj)
-        for i in newlist:
-            for j in newlist2:
-                num=i*j
-            product.append(num)
-        result=max(product)
-        print(result)
+    result=nums[0]*nums[1]
+    for i in nums:
+        for j in nums:
+            if i * j > result and i!=j:
+                result=i*j
+    print(result)
 maxProduct([5, 20, 2, 6]) # 得到 120
 maxProduct([10, -20, 0, 3]) # 得到 30
 maxProduct([10, -20, 0, -3]) # 得到 60
@@ -163,3 +104,20 @@ def twoSum(nums, target):
 result=twoSum([2, 11, 7, 15], 9)
 print(result) # show [0, 2] because nums[0]+nums[2] is 9
 
+
+#要求六 ( Optional )：
+def maxZeros(nums):
+    a=0 
+    count=0
+    for i in nums:
+        if i==0:
+           count+=1
+           a=max(count, a)
+        else:
+           count=0
+    print(a) 
+
+maxZeros([0, 1, 0, 0]) # 得到 2
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]) # 得到 4
+maxZeros([1, 1, 1, 1, 1]) # 得到 0
+maxZeros([0, 0, 0, 1, 1]) # 得到 3
