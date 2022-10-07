@@ -29,8 +29,8 @@ def getData(url):
             badList.append(title.a.string)
     
     #抓取上一頁的連結
-    nextLink=root.find("a", string="‹ 上頁")    #找到內文是‹ 上頁的a標籤;用bs4根據條件(內文:String)去找到我們想要的標籤
-    return (nextLink["href"])   #目標是這個標籤的屬性 href
+    nextLink=root.find("a", string="‹ 上頁")
+    return (nextLink["href"])
 
 
 #主程序：抓取多個頁面標題;使用while迴圈抓多頁
@@ -41,7 +41,7 @@ while count<10:
     count+=1
 
 movieList=goodList+ordinList+badList
-# print(movieList)
+
 with open("movie.txt", "w", encoding='UTF-8') as file:
     for movie in movieList:
         file.write(movie+"\n")
