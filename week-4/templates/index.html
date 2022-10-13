@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Assignment-Week4 | 張詠婷 </title>
+</head>
+<body>
+    <main>
+        <section class="header-content wrapper-content">
+            <h1 class="theme">歡迎光臨，請輸入帳號密碼</h1>
+        </section>
+        <section class="wrapper-content">
+                <div class="signin">
+                    <form action="/signin" method="POST" class="form">
+                        <h2>登入系統</h2>
+                        <div class="box1-input">
+                            <label for="username">帳號</label>
+                            <input type="text" name="username" id="username">
+                        </div>
+                        <div class="box1-input">
+                            <label for="password">密碼</label>
+                            <input type="text" name="password" id="password">
+                        </div>    
+                        <div class="btn-box">
+                            <button class="btn">登入</button>
+                        </div>
+                    </form>
+                </div> 
+                <div class="square">
+                    <form action="/calculate" method="POST" class="form">
+                        <div class="square-title">計算正整數的平方</div>
+                        <div class="box2-input">
+                            <label for="integer">正整數</label>
+                            <input type="text" name="integer" id="integer"/>
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn">計算</button>
+                        </div>
+                    </form>
+                </div>
+    </section>
+</main>
+</body>
+</html>
