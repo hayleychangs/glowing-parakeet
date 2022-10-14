@@ -29,19 +29,16 @@
                         </div>
                     </form>
                 </div> 
-                <div class="square">
-                    <form action="/calculate" method="POST" class="form">
-                        <div class="square-title">計算正整數的平方</div>
-                        <div class="box2-input">
-                            <label for="integer">正整數</label>
-                            <input type="text" name="integer" id="integer"/>
-                        </div>
-                        <div class="btn-box">
-                            <button class="btn">計算</button>
-                        </div>
-                    </form>
+                <div class="input">
+                    <h2>計算正整數的平方</h2>
+                    <div class="box2-input">
+                        <label for="integer">正整數</label>
+                        <input type="text" name="integer" id="integer" placeholder="輸入完請按Enter" onfocus="this.placeholder=''" onblur="this.placeholder" onchange="redirect()"/>
+                    </div>
                 </div>
+
     </section>
 </main>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

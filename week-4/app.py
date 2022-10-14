@@ -66,12 +66,6 @@ def signout():
     session.pop("user", None)
     return redirect(url_for("index"))
 
-@app.route("/calculate",methods=["GET","POST"])
-def calculate():
-    if request.method=="POST":
-        return redirect(url_for("square", integer=request.form.get("integer")))
-    return render_template("index.html")
-
 @app.route("/square/<integer>")
 def square(integer):
     result=int(integer)*int(integer)
@@ -79,3 +73,14 @@ def square(integer):
 
 if __name__=="__main__":
     app.run(port=3000)
+
+
+
+
+
+
+# @app.route("/calculate",methods=["GET","POST"])
+# def calculate():
+#     if request.method=="POST":
+#         return redirect(url_for("square", integer=request.form.get("integer")))
+#     return render_template("index.html")
