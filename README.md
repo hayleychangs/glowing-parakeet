@@ -1,2 +1,1 @@
-# glowing-parakeet
 trainingRepo
