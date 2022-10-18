@@ -53,4 +53,25 @@
       `select avg(follower_count) from member;`
     * *指令執行畫面*
       >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/4-3.png)<br>
+* #### **要求五：SQL JOIN (Optional)**
+  * **在資料庫中，建立新資料表紀錄留⾔資訊，取名字為 message。資料表中必須包含以 下欄位設定：**
+    * *SQL指令*<br>
+      `create table message(id bigint primary key auto_increment, member_id bigint not null, content varchar(255) not null, like_count int unsigned not null default 0, time datetime not null default current_timestamp, foreign key (member_id) references member(id))`
+    * *指令執行畫面*
+      >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/5-1.png)<br>
+  * **使⽤ SELECT 搭配 JOIN 語法，取得所有留⾔，結果須包含留⾔者會員的姓名。**
+    * *SQL指令*<br>
+      `select member.name, message.content from member inner join message on member.id = message.member_id;`
+    * *指令執行畫面*
+      >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/5-2.png)<br>
+  * **使⽤ SELECT 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有 留⾔，資料中須包含留⾔者會員的姓名。**
+    * *SQL指令*<br>
+      `select member.name, member.username, message.content, message.like_count from member inner join message on member.id = message.member_id and member.username='test';`
+    * *指令執行畫面*
+      >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/5-3.png)<br>
+  * **使⽤ SELECT、SQL Aggregate Functions 搭配 JOIN 語法，取得 member 資料表中 欄位 username 是 test 的所有留⾔平均按讚數。**
+    * *SQL指令*<br>
+      `select avg(like_count) from (select member.username, message.like_count from member inner join message on member.id = message.member_id and member.username='test') as temptable;`
+    * *指令執行畫面*
+      >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/5-4.png)<br>
       
