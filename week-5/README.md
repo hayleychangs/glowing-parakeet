@@ -31,4 +31,10 @@
       `select * from member where username='test' and password='test';`
     * *指令執行畫面*
       >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/3-6.png)<br>
+  * **使⽤ UPDATE 指令更新欄位 username 是 test 的會員資料，將資料中的 name 欄位改 成 test2。**
+    * *SQL指令*<br>
+      `set sql_safe_updates=0;`<br>
+      `update member set username='test2' where username='test';`
+    * *指令執行畫面*
+      >  ![](https://github.com/hayleychangs/glowing-parakeet/blob/main/week-5/pics/3-7.png)<br>
       
