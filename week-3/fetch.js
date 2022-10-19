@@ -16,8 +16,8 @@ window.onload=function(){
         let picStr = sightList[0].file;
         let picPosition = picStr.indexOf("http", 2)
         let pic = document.createElement("img");
-        pic.src = picStr.substring(0,picPosition)
         pic.className ="box1-pic";
+        pic.src = picStr.substring(0,picPosition)
         
         let newDivText = document.createElement("div");
         newDivText.id = "box1-1-text";
