@@ -110,38 +110,21 @@ console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
 
 //要求六 ( Optional )：
 function maxZeros(nums){
-    // let a=0;
-    // let repeated_time=0;
-    // for (let i=0;i<nums.length;i++){
-    //     if (i==0){
-    //         repeated_time+=1;
-    //         // a=Math.max(repeated_time, a);
-    //     }else if(i !==0){
-    //         a=Math.max(repeated_time, a);
-    //         repeated_time=0;
-    //     }
-        
-    // console.log(a)
-    // }
-    // }
-    let a=0
+    let repeattimes=0
     let count = 0
     for(let i = 0; i < nums.length; i++){
         if(nums[i] === 0){
             count += 1;
-            if (count>a){
-                a=count+=1;
-            }else(nums[i]===1);{
-                count=0;
+            if (count>repeattimes){
+                repeattimes=count;
             }
-        }else(nums[i]===1);{
+        }else{
             count=0;
-        }  
-        }
-    // }
-    console.log(a)
+        }      
+    }
+    console.log(repeattimes)
 }
 maxZeros([0, 1, 0, 0]); // 得到 2
 maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); // 得到 4
-// maxZeros([1, 1, 1, 1, 1]); // 得到 0
-// maxZeros([0, 0, 0, 1, 1]) // 得到 3
+maxZeros([1, 1, 1, 1, 1]); // 得到 0
+maxZeros([0, 0, 0, 1, 1]) // 得到 3
