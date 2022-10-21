@@ -1,12 +1,9 @@
 from email import message
 import sys
+import secrets
+from urllib import response
 sys.path.append("D:\Anaconda3\Lib\site-packages")
-from flask import Flask
-from flask import request
-from flask import render_template
-from flask import redirect
-from flask import session
-from flask import url_for
+from flask import Flask, request, render_template, redirect, url_for, make_response
 #from datatime import timedelta
 
 app=Flask(
@@ -14,12 +11,16 @@ app=Flask(
     static_folder="static",
     static_url_path="/static",
 ) 
-app.secret_key="12345678"
+
+key = secrets.token_urlsafe(16)
+app.secret_key="key"
 
 #app.permanent_session_lifetime=timedelta(minutes=10)
 
 @app.route("/")
 def index():
+    # resp=make_response(render_template("index.html"))
+    # resp.set_cookie(key="SignInStatus", value="Not Signed In")
     return render_template("index.html")
 
 
@@ -28,11 +29,9 @@ def signin():
     if request.method=="POST":
         #session.permanent=True
         if request.form["username"]=="test" and request.form["password"]=="test":
-            user=request.form["username"]
-            pwd=request.form["password"]
-            session["user"]=user
-            session["pwd"]=pwd
-            return redirect(url_for("member"))
+            resp=make_response(redirect(url_for("member")))
+            resp.set_cookie(key="SignInStatus", value="Signed In successfully")
+            return resp
         else:
             if request.form["username"] =="" or request.form["password"] =="":
                 error="請輸入帳號、密碼"
@@ -50,8 +49,8 @@ def signin():
 
 @app.route("/member")
 def member():
-    if "user" in session:
-        user = session["user"]
+    SignInStatus=request.cookies.get("SignInStatus")
+    if SignInStatus=="Signed In successfully":
         return render_template("member.html")
     else:
         return redirect(url_for("index"))
@@ -63,8 +62,9 @@ def error():
 
 @app.route("/signout", methods=["GET"])
 def signout():
-    session.pop("user", None)
-    return redirect(url_for("index"))
+    resp=make_response(redirect(url_for("index")))
+    resp.delete_cookie(key="SignInStatus")
+    return resp
 
 @app.route("/square/<integer>")
 def square(integer):
