@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/member.css') }}">
+    <title>歡迎光臨，這是會員頁</title>
+</head>
+<body>
+    <main>
+        <section class="wrapper-content">
+                <div class="msgbox">
+                    <div class="welcomeinfo">
+                        <h1>歡迎光臨，這是會員頁</h1>
+                        <br>
+                        <p>{{name_text}}，歡迎登入系統</p>
+                    </div>
+                    <div class="signout">
+                        <a href="/signout">登出系統</a>
+                    </div>
+                </div>
+                <div class="write-message">
+                    <form action="/message" method="POST" class="form">
+                        <h2>快來留言吧</h2>
+                        <div class="box2-input">
+                            <label for="msg-content">內容</label>
+                            <input type="text" placeholder="留個言吧~" name="msg-content" id="msg-content">
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn">送出</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="showbox">
+                    {% for msg in msgs %}
+                    <div class="show-message">
+                        {{ msg[0]+"："+msg[1] }}
+                    </div>
+                    {% endfor %}
+                </div>
+        </section>
+    </main>
+</body>
+</html>

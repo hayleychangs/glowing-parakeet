@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Assignment-Week6 | 張詠婷 </title>
+</head>
+<body>
+    <main>
+        <section class="header-content wrapper-content">
+            <h1 class="theme">歡迎光臨，請註冊登入系統</h1>
+        </section>
+        <section class="wrapper-content">
+            <div class="signup">
+                <form action="/signup" method="POST" class="form">
+                    <h2>註冊帳號</h2>
+                    <div class="box1-input">
+                        <label for="username">姓名</label>
+                        <input type="text" name="name_signup" id="name_signup">
+                    </div>
+                    <div class="box1-input">
+                        <label for="username">帳號</label>
+                        <input type="text" name="username_signup" id="username_signup">
+                    </div>
+                    <div class="box1-input">
+                        <label for="password">密碼</label>
+                        <input type="text" name="password_signup" id="password_signup">
+                    </div>    
+                    <div class="btn-box">
+                        <button class="btn">註冊</button>
+                    </div>
+                </form>
+            </div> 
+                <div class="signin">
+                    <form action="/signin" method="POST" class="form">
+                        <h2>登入系統</h2>
+                        <div class="box1-input">
+                            <label for="username">帳號</label>
+                            <input type="text" name="username_signin" id="username_signin">
+                        </div>
+                        <div class="box1-input">
+                            <label for="password">密碼</label>
+                            <input type="text" name="password_signin" id="password_signin">
+                        </div>    
+                        <div class="btn-box">
+                            <button class="btn">登入</button>
+                        </div>
+                    </form>
+                </div> 
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Noto+Sans+TC:wght@400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    font-family: "NOTO Sans TC", san-serif;
+}
+html,body {
+    height: 100%;
+}
+body {
+    background:#fcd7ad;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.msgbox{
+    width: 500PX;
+    height: 350px;
+    border-radius: 20px;
+    border: 10px solid #fff;
+    box-shadow: 0 0 20px #f6f1d1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    color: #aaa694;
+    font-size: 25px;
+}
+.calculateinfo{
+    border-radius: 10px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #aaa694;
+    color: #fff;
+}
+p{
+    font-size: 40px;
+}
+.signinpage{
+    background-color: #fff;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    border-radius: 20px;
+    border: none;
+    background-color: #aaa694;
+    width: 190px;
+    padding: 10px 50px;
+    color: #fff;
+    font-family: "NOTO Sans TC", san-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+a:hover{
+    transition: all 0.2s;
+    background-color: #BC7777;
+}

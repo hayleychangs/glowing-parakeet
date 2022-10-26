@@ -1,0 +1,119 @@
+from email import message
+import sys
+import secrets
+from unicodedata import name
+sys.path.append("D:\Anaconda3\Lib\site-packages")
+from flask import Flask, request, render_template, redirect, session, url_for
+#from datatime import timedelta
+import mysql.connector
+from flask_cors import CORS
+from models import check_username, insert_signupinfo, check_signin, create_msg, get_msgs
+
+app=Flask(
+    __name__,
+    static_folder="static",
+    static_url_path="/static",
+) 
+
+key=secrets.token_urlsafe(16)
+app.secret_key="key"
+
+CORS(app)
+
+#app.permanent_session_lifetime=timedelta(minutes=10)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/signup",methods=["POST"])
+def signup():
+    new_name=request.form["name_signup"]
+    username_check=request.form["username_signup"]
+    new_pwd=request.form["password_signup"]
+    if request.method=="POST":
+        result=check_username(username_check)
+        if result==[] and new_name!="" and username_check!="" and new_pwd!="":
+            insert_signupinfo(new_name, username_check, new_pwd)
+            signedup_msg="註冊成功"
+            return redirect(url_for("signedup", message=signedup_msg))
+        else:
+            if result is not None:
+                username_db=result[0][0]  
+                print(username_db)
+                if username_db==username_check:
+                    error="帳號已經被註冊"
+                    return redirect(url_for("error", message=error))
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/signedup")
+def signedup():
+    signedupMessage=request.args.get("message")
+    return  render_template("signedup.html", text=signedupMessage)
+
+@app.route("/signin", methods=["POST"])
+def signin():
+    username_check=request.form["username_signin"]
+    pwd_check=request.form["password_signin"]
+    if request.method=="POST":
+        #session.permanent=True
+        result=check_signin(username_check)
+        if result is None or (username_check =="" or pwd_check ==""):
+            error="請輸入帳號、密碼"
+            return redirect(url_for("error", message=error))
+        else:
+            if result is not None:
+                id_db=result[0]
+                name_db=result[1]
+                username_db=result[2]
+                pwd_db=result[3]
+                if username_check==username_db and pwd_check==pwd_db:
+                    user=username_check
+                    pwd=pwd_check
+                    session["id"]=id_db
+                    session["name"]=name_db
+                    session["user"]=user
+                    session["pwd"]=pwd
+                    return redirect(url_for("member"))
+            else:
+                error="帳號、或密碼輸入錯誤"
+                return redirect(url_for("error", message=error))
+    else:
+        if "user" in session:
+            return redirect(url_for("member"))
+        return render_template("index.html")
+
+@app.route("/member")
+def member():
+    if "user" in session:
+        username_check=session["user"]
+        pwd_check=session["pwd"]
+        membername=session.get("name")
+        msgs=get_msgs()
+        return render_template("member.html", name_text=membername, msgs=msgs)
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/message", methods=["POST"])
+def post():
+    member_id=session.get("id")
+    content=request.form["msg-content"]
+    create_msg(member_id, content)
+    return redirect(url_for("member"))
+
+@app.route("/error")
+def error():
+    errorMessage=request.args.get("message")
+    return  render_template("error.html", text=errorMessage)
+
+@app.route("/signout", methods=["GET"])
+def signout():
+        session.pop("id", None)
+        session.pop("name", None)
+        session.pop("user", None)
+        session.pop("pwd", None)
+        return redirect(url_for("index"))
+
+if __name__=="__main__":
+    app.run(port=3000)
