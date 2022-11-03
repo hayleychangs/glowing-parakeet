@@ -109,11 +109,11 @@ def error():
 
 @app.route("/signout", methods=["GET"])
 def signout():
-        session.pop("id", None)
-        session.pop("name", None)
-        session.pop("user", None)
-        session.pop("pwd", None)
-        return redirect(url_for("index"))
+    session.pop("id", None)
+    session.pop("name", None)
+    session.pop("user", None)
+    session.pop("pwd", None)
+    return redirect(url_for("index"))
 
 if __name__=="__main__":
     app.run(port=3000)

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/member.css') }}">
+    <title>歡迎光臨，這是會員頁</title>
+</head>
+<body>
+    <main>
+        <section class="wrapper-content">
+                <div class="msgbox">
+                    <div class="welcomeinfo">
+                        <h1>歡迎光臨，這是會員頁</h1>
+                        <br>
+                        <p id="member-name">{{name_text}}，歡迎登入系統</p>
+                    </div>
+                    <div class="signout">
+                        <a href="/signout">登出系統</a>
+                    </div>
+                </div>
+                <div class="username-query">
+                    <form action="/api/member" class="form" id="query-form" method="GET">
+                        <h2>查詢會員姓名</h2>
+                        <div class="box1-input">
+                            <input type="text" name="username" id="username">
+                        </div>    
+                        <div class="btn-box" type="submit">
+                            <button class="btn">查詢</button>
+                        </div>
+                    </form>
+                    <div class="query-result" id="query-result"></div>
+                </div>
+                <div class="rename">
+                    <form action="/api/member" class="form" id="rename-form" method="PATCH">
+                        <h2>更新我的姓名</h2>
+                        <div class="box1-input">
+                            <input type="text" name="update-name" id="update-name">
+                        </div>    
+                        <div class="btn-box" type="submit">
+                            <button class="btn">更新</button>
+                        </div>
+                    </form>
+                    <div class="rename-result" id="rename-result"></div>
+                </div> 
+                <div class="write-message">
+                    <form action="/message" method="POST" class="form">
+                        <h2>快來留言吧</h2>
+                        <div class="box2-input">
+                            <label for="msg-content">內容</label>
+                            <input type="text" placeholder="留個言吧~" name="msg-content" id="msg-content">
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn">送出</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="showbox">
+                    {% for msg in msgs %}
+                    <div class="show-message">
+                        {{ msg[0]+"："+msg[1] }}
+                    </div>
+                    {% endfor %}
+                </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/member.js') }}"></script>
+</body>
+</html>
