@@ -1,12 +1,9 @@
-from email import message
 import sys
 import secrets
-import json
 from unicodedata import name
 sys.path.append("D:\Anaconda3\Lib\site-packages")
 from flask import Flask, request, render_template, redirect, session, url_for, jsonify, make_response
 #from datatime import timedelta
-import mysql.connector
 from flask_cors import CORS
 from models import check_username, insert_signupinfo, check_signin, create_msg, get_msgs, getmemberinfo, rename
 

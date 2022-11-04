@@ -9,7 +9,7 @@ function querySubmit(event){
         newDiv.appendChild(errorContent);
         queryResult.appendChild(newDiv);
     }else{
-        let url=`http://127.0.0.1:3000/api/member?username=${user}`
+        let url=`/api/member?username=${user}`
         fetch(url, {
             methods: "GET",
         })
@@ -37,7 +37,7 @@ function querySubmit(event){
 let getResult=()=>{
     const user=document.getElementById("username").value;
     let queryResult=document.getElementById("query-result");
-    let src=`http://127.0.0.1:3000/api/member?username=${user}`;
+    let src=`/api/member?username=${user}`;
     fetch(src).then((response)=>{
         if(!response.ok){
             throw new Error("response.statusText");
@@ -86,7 +86,7 @@ function renameSubmit(event){
         newDiv.appendChild(errorContent);
         renameResult.appendChild(newDiv);
     }else{
-        let url="http://127.0.0.1:3000/api/member";
+        let url="/api/member";
         fetch(url, {
             method: "PATCH",
             body: JSON.stringify({
