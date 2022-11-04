@@ -40,11 +40,10 @@ def apimember():
                 #session["name"]=newname_db
                 return response
             else:
-                if "user" not in session:
-                    request_data=request.get_json()
-                    unauthorized_error_message=True
-                    response=make_response(jsonify({"error":unauthorized_error_message}), 401)
-                    return response
+                request_data=request.get_json()
+                unauthorized_error_message=True
+                response=make_response(jsonify({"error":unauthorized_error_message}), 401)
+                return response
         except:
             unexpected_error_message=True
             error_response=make_response(jsonify({"error":unexpected_error_message}))
@@ -57,10 +56,9 @@ def apimember():
                     response=getmemberinfo(username_input)
                     return response
                 else:
-                    if "user" not in session:
-                        unauthorized_error_message=None
-                        response=make_response(jsonify({"data":unauthorized_error_message}), 401)
-                        return response
+                    unauthorized_error_message=None
+                    response=make_response(jsonify({"data":unauthorized_error_message}), 401)
+                    return response
             except:   
                 unexpected_error_message=None
                 unexpected_error_response=make_response(jsonify({"data":unexpected_error_message}))
@@ -108,19 +106,18 @@ def signin():
             error="請輸入帳號、密碼"
             return redirect(url_for("error", message=error))
         else:
-            if result is not None:
-                id_db=result[0]
-                name_db=result[1]
-                username_db=result[2]
-                password_db=result[3]
-                if username_check==username_db and password_check==password_db:
-                    user=username_check
-                    password=password_check
-                    session["id"]=id_db
-                    session["name"]=name_db
-                    session["user"]=user
-                    session["password"]=password
-                    return redirect(url_for("member"))
+            id_db=result[0]
+            name_db=result[1]
+            username_db=result[2]
+            password_db=result[3]
+            if username_check==username_db and password_check==password_db:
+                user=username_check
+                password=password_check
+                session["id"]=id_db
+                session["name"]=name_db
+                session["user"]=user
+                session["password"]=password
+                return redirect(url_for("member"))
             else:
                 error="帳號、或密碼輸入錯誤"
                 return redirect(url_for("error", message=error))
